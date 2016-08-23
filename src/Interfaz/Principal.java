@@ -195,10 +195,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdBorrarActionPerformed
 
     private void cmdLlenarAutomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLlenarAutomaticoActionPerformed
-     double n;
+    double n;
     for (int i = 0; i < v.length; i++) {
-    //v[i]= (int) (Math.random()* 50 + 1);
-    n= i+1;
+    n= (int) (Math.random()* 50 + 1);
     v[i]=n;
     }
     JOptionPane.showMessageDialog(this, "Vector llenado correctamente");
