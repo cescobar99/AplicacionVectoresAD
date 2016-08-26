@@ -20,7 +20,12 @@ public class Principal extends javax.swing.JFrame {
     double v[];
     public Principal() {
         initComponents();
-    }
+        cmdCrear.setEnabled(true);
+        cmdLlenarManual.setEnabled(false);
+        cmdLlenarAutomatico.setEnabled(false);
+        cmdMostrar.setEnabled(false);
+        cmdBorrar.setEnabled(true);
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -133,14 +138,17 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(560, 436));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCrearActionPerformed
@@ -158,6 +166,14 @@ public class Principal extends javax.swing.JFrame {
     longitud= Integer.parseInt(txtLongitud.getText().trim());
     v = new double [longitud]; 
     JOptionPane.showMessageDialog(this, "Vector creado exitosamente!");
+    
+    cmdCrear.setEnabled(false);
+    cmdLlenarManual.setEnabled(true);
+    cmdLlenarAutomatico.setEnabled(true);
+    cmdMostrar.setEnabled(false);
+    cmdBorrar.setEnabled(true);
+    txtLongitud.setEditable(false);
+    
     }
     }//GEN-LAST:event_cmdCrearActionPerformed
 
@@ -174,16 +190,23 @@ public class Principal extends javax.swing.JFrame {
     for (int i = 0; i < v.length; i++) {
     n= Double.parseDouble(JOptionPane.showInputDialog(this, "Digite el elemento en la posicion"+i));
     v[i]=n;
-            
-        }
+    }
+    cmdCrear.setEnabled(false);
+    cmdLlenarManual.setEnabled(false);
+    cmdLlenarAutomatico.setEnabled(false);
+    cmdMostrar.setEnabled(true);
+    cmdBorrar.setEnabled(true);
     }//GEN-LAST:event_cmdLlenarManualActionPerformed
 
     private void cmdMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdMostrarActionPerformed
     for (int i = 0; i < v.length; i++) {
     txtResultado.append(v[i]+"\n");
-      
-            
-        }
+    }
+    cmdCrear.setEnabled(false);
+    cmdLlenarManual.setEnabled(false);
+    cmdLlenarAutomatico.setEnabled(false);
+    cmdMostrar.setEnabled(false);
+    cmdBorrar.setEnabled(true);
     }//GEN-LAST:event_cmdMostrarActionPerformed
 
     private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
@@ -192,6 +215,12 @@ public class Principal extends javax.swing.JFrame {
     v= null;
     
     txtLongitud.requestFocusInWindow();
+    cmdCrear.setEnabled(true);
+    cmdLlenarManual.setEnabled(false);
+    cmdLlenarAutomatico.setEnabled(false);
+    cmdMostrar.setEnabled(false);
+    cmdBorrar.setEnabled(true);
+    txtLongitud.setEditable(true);
     }//GEN-LAST:event_cmdBorrarActionPerformed
 
     private void cmdLlenarAutomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLlenarAutomaticoActionPerformed
@@ -200,6 +229,11 @@ public class Principal extends javax.swing.JFrame {
     n= (int) (Math.random()* 50 + 1);
     v[i]=n;
     }
+    cmdCrear.setEnabled(false);
+    cmdLlenarManual.setEnabled(false);
+    cmdLlenarAutomatico.setEnabled(false);
+    cmdMostrar.setEnabled(true);
+    cmdBorrar.setEnabled(true);
     JOptionPane.showMessageDialog(this, "Vector llenado correctamente");
     }//GEN-LAST:event_cmdLlenarAutomaticoActionPerformed
 
